@@ -1,0 +1,42 @@
+# Given an image represented by an NxN matrix, 
+# where each pixel in the image is 4 bytes, 
+# write a method to rotate the image by 90 degrees. 
+# Can you do this in place?
+class Solution:
+    import numpy
+    def MatrixRotate(self,InputMatrix):
+        length = len(InputMatrix)
+        TestMatrix = numpy.zeros((length,length))
+        for i in range(length):
+            for j in range(length):
+                if i != j:
+                    TestMatrix[j][i] = InputMatrix[i][j]
+                else:
+                    TestMatrix[i][j] = InputMatrix[i][j]
+        return TestMatrix
+if __name__ == "__main__":
+    matrix = [[1,2,3],[4,5,6],[7,8,9]]
+    print (Solution().MatrixRotate(matrix))
+    
+# Write an algorithm such that if an element in an MxN matrix is 0, 
+# its entire row and column is set to 0 
+import numpy as np
+class Solution:    
+    def SetZeros(self,InputMatrix):
+        InputMatrix = np.array(InputMatrix)
+        r = InputMatrix.shape[0]
+        c = InputMatrix.shape[1]
+        location = []
+        for i in range(r):
+            for j in range(c):
+                if InputMatrix[i][j]==0:
+                    location.append([i,j])
+        for i in range(len(location)):
+            a,b = location[i]
+            InputMatrix[a,:]=0
+            InputMatrix[:,b]=0
+        return InputMatrix
+if __name__ == "__main__":
+    matrix = [[1,2,3],[4,0,6],[7,8,9]]
+    print (Solution().SetZeros(matrix))
+                    
