@@ -1,0 +1,38 @@
+# Write code to remove duplicates from an unsorted linked list 
+# FOLLOW UPHow would you solve this problem 
+# if a temporary bufer is not allowed? 
+
+class ListNode:
+    def __init__(self,val,Next = None):
+        self.val = val
+        self.next = None
+
+class Solution:
+    def DelDup(self,head):
+        if head is None:
+            return None
+        Temp = head
+        while Temp is not None:
+            SecondTemp = Temp
+            while SecondTemp.next is not None:
+                if SecondTemp.next.val == Temp.val:
+                    SecondTemp.next == SecondTemp.next.next
+                else:
+                    SecondTemp = SecondTemp.next
+            Temp = Temp.next        
+        return head
+    
+    
+def link(digits):
+    head = ListNode(-1)
+    value = head
+    for i in digits:
+        value.next = ListNode(i)
+        value = value.next
+    return head.next
+
+
+if __name__ == "__main__":
+    s1 = link([1,2])
+    print (s1)
+    print(Solution().DelDup(s1))
