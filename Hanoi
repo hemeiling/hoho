@@ -1,0 +1,11 @@
+def moveTower(n,from, to, thru):
+  if n>=1:
+    moveTower(n-1,from,thru,to)
+    moveDisk(from, to):
+    moveTower(n-1,thru,to,from)
+def moveDisk(from,to):
+   print("moving disk from",from,"to",to)
+   
+moveTower(3,"A","B","C")
+    
+      
